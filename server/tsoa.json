@@ -1,0 +1,25 @@
+{
+    "entryFile": "./src/index.ts",
+    "noImplicitAdditionalProperties": "throw-on-extras",
+    "controllerPathGlobs": [
+        "src/controllers/*.controller.ts"
+    ],
+    "spec": {
+        "outputDirectory": "dist",
+        "specVersion": 3,
+        "basePath": "/v1",
+        "securityDefinitions": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    },
+    "routes": {
+        "basePath": "/v1",
+        "entryFile": "./src/index.ts",
+        "authenticationModule": "./src/authentication/authentication.ts",
+        "routesDir": "dist"
+    }
+}
