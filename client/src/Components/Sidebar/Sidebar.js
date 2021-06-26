@@ -4,6 +4,8 @@ import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import WatchLaterRoundedIcon from "@material-ui/icons/WatchLaterRounded";
 import LibraryAddRoundedIcon from '@material-ui/icons/LibraryAddRounded';
 import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
+import Divider from '@material-ui/core/Divider';
+
 import { NavLink } from "react-router-dom";
 import { UserContext } from '../../App'
 import "./Sidebar.css";
@@ -27,7 +29,8 @@ function Sidebar() {
   return (
     <>
       <div className={`sidebar ${sidebarActive ? "active" : ""}`}>
-        <h3>MailSheduler</h3>
+        <h3 className="heading">MailSheduler</h3>
+        <Divider className="divider" />
         <div className="sidebar__menu">
           <NavLink
             to="/"
@@ -40,7 +43,7 @@ function Sidebar() {
           >
             <HomeRoundedIcon
               className="sidebar__menuIcon"
-              style={iconStyle(36)}
+              style={iconStyle(28)}
             /> <h3>Home</h3>
           </NavLink>
           <NavLink

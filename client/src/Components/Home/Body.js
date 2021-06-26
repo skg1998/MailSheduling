@@ -6,8 +6,7 @@ import NewMail from '../NewMaill/NewMail'
 function Body({ title, type }) {
 
     return (
-        <div>
-            <h1>Welcome To MailScheduler...</h1>
+        <div style={{ margin: '15px' }}>
             <div className="body">
                 <h3 className="title">{title}</h3>
                 {

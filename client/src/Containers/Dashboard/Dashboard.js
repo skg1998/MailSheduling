@@ -11,7 +11,6 @@ function Dashboard() {
                 <Sidebar />
                 <div style={{ width: '100%' }}>
                     <Header />
-
                     <Route exact path="/">
                         <Body title="Your Scheduled Mails" type="pending" />
                     </Route>

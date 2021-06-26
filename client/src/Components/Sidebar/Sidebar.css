@@ -9,12 +9,24 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  padding: 3rem 0;
+  padding: 2rem 0;
   overflow-x: hidden;
 }
 .sidebar::-webkit-scrollbar {
   display: none;
 }
+
+.heading {
+  color: white !important;
+  font-size: 25px !important;
+  margin-bottom: 10px;
+}
+
+.divider {
+  background: white !important;
+  width: 100% !important;
+}
+
 /* .sidebar__icon {
   position: absolute !important;
   top: 2rem;
@@ -23,13 +35,12 @@
   z-index: 1000;
 } */
 .sidebar__menu {
-  margin-top: 4rem;
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
 }
 .sidebar__menuItem {
-  padding: 1rem 1.5rem;
+  padding: 10px;
   position: relative;
   width: 100%;
   display: flex;
