@@ -27,7 +27,7 @@
 }
 .mail__form div textarea{
     width: 90%;
-    height: 8rem;
+    height: 7rem;
     border: 1px solid #eee;
     padding: 1rem;
     font-size: 1rem;
@@ -36,7 +36,7 @@
 }
 .mail__form .selectInput{
     padding: 0.5rem 1rem;
-    padding-left: 3rem;
+    padding-left: 5rem;
     width: 25%;
     border-radius:0.2rem ;
 }

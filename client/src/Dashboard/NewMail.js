@@ -1,14 +1,26 @@
 import { motion } from 'framer-motion'
 import React from 'react'
-import { container, pageTransition } from '../../utils/util'
+import { container, pageTransition } from '../util'
 import './NewMail.css'
 import FormatBoldIcon from '@material-ui/icons/FormatBold';
 import FormatItalicIcon from '@material-ui/icons/FormatItalic';
 import FormatUnderlinedIcon from '@material-ui/icons/FormatUnderlined';
 import SendIcon from '@material-ui/icons/Send';
 
+import React, { useState, useEffect } from 'react';
+
 
 function NewMail() {
+
+    const [tags, setTags] = React.useState([]);
+    const addTags = event => {
+        if (event.key === "Enter" && event.target.value !== "") {
+            setTags([...tags, event.target.value]);
+            event.target.value = "";
+        }
+    };
+
+
     return (
         <motion.div
             initial="initial"
@@ -18,16 +30,29 @@ function NewMail() {
             transition={pageTransition}
             className="mailBox">
             <div className="mail__form">
-                <div>
+                <label htmlFor="#to">To </label>
+                <div className="tags-input">
                     <label htmlFor="#to">To </label>
-                    <input type="text" id="to" />
+                    <ul>
+                        {tags.map((tag, index) => (
+                            <li key={index}>
+                                <span>{tag}</span>
+                                <i className="material-icons">close</i>
+                            </li>
+                        ))}
+                    </ul>
+                    <input
+                        type="text "
+                        onKeyUp={event => addTags(event)}
+                        placeholder="Press enter to add tags"
+                    />
                 </div>
                 <div>
-                    <label htmlFor="#to">CC </label>
+                    <label htmlFor="#cc">CC </label>
                     <input type="text" id="cc" />
                 </div>
                 <div className="selectInput">
-                    <label htmlFor="#cc">Shedule</label>
+                    <label htmlFor="#shedule">Shedule</label>
                     <select name="" id="">
                         <option value="second">20-30 Seconds</option>
                         <option value="week">A Week</option>
