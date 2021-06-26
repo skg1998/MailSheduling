@@ -2,15 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { getData } from '../request';
 import blank from '../assets/file.png'
 import TableRow from './TableRow';
+import { motion } from 'framer-motion';
+import { container, pageTransition, pageZoom } from '../util';
+
 
 function MailTable({ type }) {
 
-    const [mails, setMails] = useState({
-        id: ' 646468466', sno: '5', mail: 'ankit@email.co',
-        subject: 'Flipr Hackathon 9.0 Fullstack Web Development Task',
-        body: 'your selection we are forwarding you your Full Stack Web Development task in the attachment. Please find the attachment',
-        date: '05/06/2002', type: 'pending'
-    })
+    const [mails, setMails] = useState()
     const mail = [{
         id: ' 646468466', sno: '5', mail: 'ankit@email.co',
         subject: 'Flipr Hackathon 9.0 Fullstack Web Development Task',
@@ -49,7 +47,12 @@ function MailTable({ type }) {
         getMails()
     }, [])
     return (
-        <div className="mailBox">
+        <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={container}
+        transition={pageTransition}
+        className="mailBox">
             <div className="row head__row">
                 <td>Sno</td>
                 <td>Email Address</td>
@@ -69,7 +72,7 @@ function MailTable({ type }) {
                     </div>
             }
 
-        </div>
+        </motion.div>
     )
 }
 

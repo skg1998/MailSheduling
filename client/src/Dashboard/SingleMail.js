@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import './SingleMail.css'
 import { useParams } from 'react-router-dom';
 import { getData } from '../request';
+import { motion } from 'framer-motion';
+import { pageTransition, pageZoom } from '../util';
 
 function SingleMail() {
     const { id } = useParams();
@@ -49,7 +51,13 @@ function SingleMail() {
     return (
         <div className="body">
             <h1 className="title">Mail {singleMail.type}</h1>
-            <div className="mailBox">
+            <motion.div
+                initial="initial"
+                animate="in"
+                exit="out"
+                variants={pageZoom}
+                transition={pageTransition}
+                className="mailBox">
                 <div className="mail__content">
 
                     <h3>To: <span className="p-text">{singleMail.mail}</span></h3>
@@ -59,7 +67,7 @@ function SingleMail() {
                     </p>
                     <h4>Status: <span className="p-text">{singleMail.type}</span></h4>
                 </div>
-            </div>
+            </motion.div>
 
         </div>
     )

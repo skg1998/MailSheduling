@@ -3,6 +3,9 @@ import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
 import CloudDoneIcon from '@material-ui/icons/CloudDone';
 import { useHistory } from 'react-router-dom';
 import { postData } from '../request';
+import { item } from '../util';
+import { motion } from 'framer-motion';
+
 function TableRow({ id, sno, mailId, subject, body, date, type }) {
 
     const history = useHistory();
@@ -17,7 +20,7 @@ function TableRow({ id, sno, mailId, subject, body, date, type }) {
     }
 
     return (
-        <div className="row body__row">
+        <motion.div variants={item} className="row body__row">
             <td onClick={onMailClick}>{sno}</td>
             <td onClick={onMailClick}>{mailId}</td>
             <td onClick={onMailClick}><p className="line-clamp-1">{subject} </p></td>
@@ -28,7 +31,7 @@ function TableRow({ id, sno, mailId, subject, body, date, type }) {
                     :
                     <td onClick={cancelMail}><CancelOutlinedIcon className="cancel" /></td>
             }
-        </div>
+        </motion.div>
     )
 }
 
