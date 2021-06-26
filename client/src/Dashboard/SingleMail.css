@@ -1,0 +1,22 @@
+.mail__content{
+    padding: 2rem;
+}
+.mail__content h3{
+    font-weight: 600;
+}
+.mail__content h2{
+    margin: 1rem 0;
+    font-weight: 600;
+}
+.mail__content h4{
+    margin: 1rem 0;
+    font-weight: 500;
+}
+.mail__content span{
+    font-size: 90%;
+    font-weight: 500;
+}
+.mail__content p{
+    line-height: 1.4;
+    word-spacing: 0.1rem;
+}
