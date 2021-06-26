@@ -1,6 +1,7 @@
 import React from 'react'
 import './Body.css'
 import MailTable from './MailTable'
+import NewMail from './NewMail'
 
 function Body({ title, type }) {
 
@@ -10,7 +11,7 @@ function Body({ title, type }) {
             {
                 type === 'new_mail' ?
                     <>
-                        {/* <NewMail /> */}
+                        <NewMail />
                     </>
                     :
                     <MailTable type={type} />
