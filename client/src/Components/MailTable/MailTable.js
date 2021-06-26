@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { getData } from '../../request';
-import blank from '../../Assets/file.png'
+import blank from '../../assets/file.png'
 import TableRow from '../TableRow/TableRow';
 import { motion } from 'framer-motion';
 import { container, pageTransition } from '../../utils/util';
