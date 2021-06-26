@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Dashboard from './Containers/Dashboard/Dashboard'
+import Login from '../src/Pages/Login/Login'
 
 import { createContext, useReducer } from 'react';
 import { initialState, reducer } from './reducer';
 import { getData } from './request';
+import Signup from './Pages/Signup/Signup';
 
 export const UserContext = createContext();
 
@@ -34,7 +36,10 @@ export default function App() {
     <UserContext.Provider value={{ state, dispatch }}>
       <BrowserRouter>
         <Switch>
-          <Route component={Dashboard} />
+        <Route exact path="/login" component={Login} />
+        <Route component={Dashboard} />
+        <Route path="/signup" component={Signup}></Route>
+          
         </Switch>
       </BrowserRouter>
     </UserContext.Provider>
