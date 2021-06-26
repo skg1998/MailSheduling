@@ -1,10 +1,9 @@
-import React, { useContext } from "react";
-import { UserContext } from '../App'
-import "./Header.css";
+import React from "react";
 import SearchRoundedIcon from "@material-ui/icons/SearchRounded";
+import { Avatar } from "@material-ui/core";
+import "./Header.css";
 
 function Header() {
-  const { state, dispatch } = useContext(UserContext);
   return (
     <div className="header">
       <div className="header__nav">
@@ -15,7 +14,6 @@ function Header() {
             placeholder="Search..."
           />
         </div>
-        <h3>{state.username}</h3>
       </div>
     </div>
   );

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import './SingleMail.css'
 import { useParams } from 'react-router-dom';
-import { getData } from '../request';
+
+import { getData } from '../../request';
 import { motion } from 'framer-motion';
-import { pageTransition, pageZoom } from '../util';
+import { pageTransition, pageZoom } from '../../utils/util';
+
+import './SingleMail.css'
 
 function SingleMail() {
     const { id } = useParams();
