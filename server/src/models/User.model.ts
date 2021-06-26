@@ -1,51 +1,31 @@
-import { Document, Model, Schema, model } from "mongoose";
-
-export const enum Gender {
-    Male = 'male',
-    Female = 'female',
-    Other = 'other'
-}
+import { Document, Model, Schema, model } from 'mongoose';
 
 export interface IUser {
-    firstName: string;
-    lastName: string;
-    dob: Date;
-    countryCode: number;
-    contactNumber: number;
-    gender: Gender
+  username: string;
+  password?: string;
+  googleId?: string;
 }
 
-export interface IUserDocument extends IUser, Document { }
-export interface IUserModel extends Model<IUserDocument> { }
+export interface IUserDocument extends IUser, Document {}
+export interface IUserModel extends Model<IUserDocument> {}
 
-const UserSchema = new Schema({
-    firstName: {
-        type: String,
-        required: true,
+const UserSchema = new Schema(
+  {
+    username: {
+      type: String,
+      unique: true,
+      required: true,
     },
-    lastName: {
-        type: String,
-        required: true,
+    password: {
+      type: String,
     },
-    dob: {
-        type: Date,
-        required: true,
+    googleId: {
+      type: String,
     },
-    countryCode: {
-        type: Number,
-        required: true,
-    },
-    contactNumber: {
-        type: Number,
-        required: true,
-        unique: true
-    },
-    gender: {
-        type: String,
-        required: true,
-    }
-}, {
-    timestamps: true
-});
+  },
+  {
+    timestamps: true,
+  }
+);
 
-export const UserModel = model<IUserDocument>("users", UserSchema);
+export const UserModel = model<IUserDocument>('users', UserSchema);
