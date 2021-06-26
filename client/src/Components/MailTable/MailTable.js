@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { getData } from '../request';
-import blank from '../assets/file.png'
-import TableRow from './TableRow';
+import { getData } from '../../request';
+import blank from '../../Assets/file.png'
+import TableRow from '../TableRow/TableRow';
 import { motion } from 'framer-motion';
-import { container, pageTransition } from '../util';
+import { container, pageTransition } from '../../utils/util';
 
 
 function MailTable({ type }) {
@@ -48,11 +48,11 @@ function MailTable({ type }) {
     }, [])
     return (
         <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={container}
-        transition={pageTransition}
-        className="mailBox">
+            initial="hidden"
+            animate="visible"
+            variants={container}
+            transition={pageTransition}
+            className="mailBox">
             <div className="row head__row">
                 <td>Sno</td>
                 <td>Email Address</td>

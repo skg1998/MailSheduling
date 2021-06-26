@@ -1,10 +1,14 @@
 import React from 'react'
+
+import { useHistory } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
 import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
 import CloudDoneIcon from '@material-ui/icons/CloudDone';
-import { useHistory } from 'react-router-dom';
-import { postData } from '../request';
-import { item } from '../util';
-import { motion } from 'framer-motion';
+
+import { postData } from '../../request';
+import { item } from '../../utils/util';
+
 
 function TableRow({ id, sno, mailId, subject, body, date, type }) {
 

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import React from 'react'
-import { container, pageTransition } from '../util'
+import { container, pageTransition } from '../../utils/util'
 import './NewMail.css'
 import FormatBoldIcon from '@material-ui/icons/FormatBold';
 import FormatItalicIcon from '@material-ui/icons/FormatItalic';

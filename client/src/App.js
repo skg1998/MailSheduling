@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Dashboard from './Dashboard/Dashboard'
+import Dashboard from './Containers/Dashboard/Dashboard'
 
 import { createContext, useReducer } from 'react';
 import { initialState, reducer } from './reducer';
