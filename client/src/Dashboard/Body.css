@@ -1,0 +1,203 @@
+::-webkit-scrollbar {
+    width: 5px;
+    height: 2px;
+}
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2d3748;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+}
+  ::-webkit-scrollbar-thumb:hover {
+      background: #000;
+  }
+  ::-webkit-scrollbar-thumb:active {
+    background: #000000;
+  }
+  ::-webkit-scrollbar-track {
+      border: 0px none #ffffff;
+      border-radius: 50px;
+  }
+ 
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+.body{
+    max-width: 100%;
+    height: 74vh;
+    overflow: hidden;
+    position: relative;
+    padding: 4rem;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+.body .title{
+    position: absolute;
+    top: 0;
+    font-size: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 500;
+    color: #333;
+    text-transform: capitalize;
+}
+.body .mailBox{
+    width: 90%;
+    height: 100%;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    overflow-y: scroll;
+    position: relative;
+}
+.line-clamp-1{
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .line-clamp-2{
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+.row{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0.5rem;
+    margin: 0.05rem 0;
+}
+.head__row{
+    border-bottom: 1px solid #999;
+    font-weight: 700;
+    color: #444;
+}
+.body__row{
+    border-radius: 0.5rem;
+    cursor: pointer;
+    padding: 1rem 0;
+    transition: all 0.2s;
+}
+.body__row:hover{
+    box-shadow: 0 0 1rem rgba(0,0,0,0.1);
+    transform: scale(1.01);
+}
+.row td{
+    text-align: center;
+    padding: 0 0.02rem;
+    border-right: 1px solid rgb(160, 160, 160);
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.row td:nth-child(1){
+    flex: 0.1;
+}
+.row td:nth-child(2){
+    flex: 0.2;
+}
+.row td:nth-child(3){
+    padding: 0 0.5rem;
+flex: 0.4;
+}
+.row td:nth-child(4){
+    flex: 0.2;
+}
+.row td:nth-child(5){
+    flex: 0.2;
+    border-right: none;
+}
+.row td .cancel{
+    color: red;
+    transition: all 0.2s;
+    border-radius: 50%;
+    z-index: 20;
+}
+.row td .cancel:hover{
+    transform: scale(1.05);
+    background: red;
+    color: #fff;
+}
+
+.blank{
+    width: 90%;
+    height: 90%;
+    margin: auto;
+    display: grid;
+    place-items: center;
+}
+.blank img {
+    width: 200px;
+    height: 200px;
+    filter: drop-shadow(2px, 2px, 15px, rgba(0,0,0,0.2));
+}
+@media(max-width: 1024px){
+    .body{
+        padding:3rem;
+    }
+}
+@media (max-width: 767.98px) { 
+    .body{
+        margin:auto;
+        position: relative;
+        padding: 3rem 1rem;
+    }
+    .body .title{
+        left: 1.5rem;
+        font-size: 1.8rem;
+        transform: translateX(0);
+    }
+.body .mailBox{
+   overflow-x: scroll;
+   width: 100%;
+}
+
+.row td{
+    min-width: 10rem
+}
+.row td:nth-child(1){
+    min-width: 2rem;
+}
+    .row td:nth-child(3){
+        display: none;
+    }
+   
+    .row td:nth-child(2){
+        flex: 0.3;
+    }
+    
+    .row td:nth-child(4){
+        flex: 0.25;
+    }
+    .row td:nth-child(5){
+        flex: 0.3;
+    }
+   
+}
+
+@media (max-width: 575.98px) { 
+    .row td:nth-child(4){
+        display: none;
+    }
+    .row td:nth-child(1){
+        flex: 0.2;
+    }
+    .row td:nth-child(2){
+        flex: 0.5;
+    }
+    .row td:nth-child(5){
+        flex: 0.3;
+    }
+
+ }
