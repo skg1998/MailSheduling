@@ -22,9 +22,13 @@ function NewMail() {
                     <label htmlFor="#to">To </label>
                     <input type="text" id="to" />
                 </div>
+                <div>
+                    <label htmlFor="#to">CC </label>
+                    <input type="text" id="cc" />
+                </div>
                 <div className="selectInput">
-                    <label htmlFor="#cc">CC</label>
-                    <select name="" id="">CCNme
+                    <label htmlFor="#cc">Shedule</label>
+                    <select name="" id="">
                         <option value="second">20-30 Seconds</option>
                         <option value="week">A Week</option>
                         <option value="month">A Month</option>
