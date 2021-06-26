@@ -1,6 +1,7 @@
 import { IUser, IUserDocument } from '../models';
 import constants from '../config/constants';
 import * as jwt from 'jsonwebtoken';
+import {compare} from 'bcryptjs'
 
 export class UserService {
   constructor() {}
@@ -11,7 +12,7 @@ export class UserService {
     });
   }
 
-  googleLogin(user: IUser): string {
-    return '';
+  comparePassword(enteredPassword, password){
+    return compare(enteredPassword, password);
   }
 }

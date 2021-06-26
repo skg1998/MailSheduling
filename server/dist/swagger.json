@@ -365,19 +365,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"properties": {
-									"password": {
-										"type": "string"
-									},
-									"username": {
-										"type": "string"
-									}
-								},
-								"required": [
-									"password",
-									"username"
-								],
-								"type": "object"
+								"$ref": "#/components/schemas/IUser"
 							}
 						}
 					}

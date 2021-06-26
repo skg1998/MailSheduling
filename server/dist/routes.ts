@@ -188,7 +188,7 @@ export function RegisterRoutes(app: express.Router) {
         app.post('/v1/user/login',
             function UserController_login(request: any, response: any, next: any) {
             const args = {
-                    user: {"in":"body","name":"user","required":true,"dataType":"nestedObjectLiteral","nestedProperties":{"password":{"dataType":"string","required":true},"username":{"dataType":"string","required":true}}},
+                    user: {"in":"body","name":"user","required":true,"ref":"IUser"},
                     unauthorized: {"in":"res","name":"401","required":true,"dataType":"nestedObjectLiteral","nestedProperties":{"message":{"dataType":"string","required":true}}},
             };
 
