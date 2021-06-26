@@ -8,9 +8,12 @@ import SingleMail from './SingleMail'
 function Dashboard() {
     return (
         <>
-            <Sidebar />
-            <Header />
             {/* <SingleMail /> */}
+            <main>
+            <Sidebar />
+            <div style={{width: '100%'}}>
+            <Header />
+
             <Route exact path="/">
                 <Body title="Your Scheduled Mails" type="pending" />
             </Route>
@@ -20,6 +23,8 @@ function Dashboard() {
             <Route exact path="/history">
                 <Body title="Your Mail History" type="sent" />
             </Route>
+            </div>
+            </main>
         </>
     )
 }

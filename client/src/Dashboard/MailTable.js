@@ -3,7 +3,7 @@ import { getData } from '../request';
 import blank from '../assets/file.png'
 import TableRow from './TableRow';
 import { motion } from 'framer-motion';
-import { container, pageTransition, pageZoom } from '../util';
+import { container, pageTransition } from '../util';
 
 
 function MailTable({ type }) {

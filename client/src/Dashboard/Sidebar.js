@@ -25,13 +25,14 @@ function Sidebar() {
     setSidebarActive((sidebarActive) => !sidebarActive);
 
   return (
-    <div className={`sidebar ${sidebarActive ? "active" : ""}`}>
+    <>
       {
         state ?
-          <Avatar className="btn-bg"> {state.username[0]} </Avatar>
+          <Avatar className="sidebar__icon btn-bg" onClick={toggleSidebar}> {state.username[0]} </Avatar>
           :
-          <Avatar className="btn-bg"></Avatar>
+          <Avatar className="sidebar__icon btn-bg" onClick={toggleSidebar}></Avatar>
       }
+    <div className={`sidebar ${sidebarActive ? "active" : ""}`}>
       {/* <img src={logo} className="sidebar__icon" onClick={toggleSidebar} alt="" /> */}
       <div className="sidebar__menu">
         <NavLink
@@ -46,7 +47,7 @@ function Sidebar() {
           <HomeRoundedIcon
             className="sidebar__menuIcon"
             style={iconStyle(36)}
-          />
+          /> <h3>Home</h3>
         </NavLink>
         <NavLink
           to="/history"
@@ -59,7 +60,7 @@ function Sidebar() {
           <WatchLaterRoundedIcon
             className="sidebar__menuIcon"
             style={iconStyle(32)}
-          />
+          /> <h3>History</h3>
         </NavLink>
         <NavLink
           to="/new_mail"
@@ -74,7 +75,7 @@ function Sidebar() {
             className="sidebar__menuIcon"
             style={iconStyle(34)
             }
-          />
+          /> <h3>New Mail</h3>
         </NavLink>
         <NavLink
           to="/logout"
@@ -87,7 +88,7 @@ function Sidebar() {
           <ExitToAppRoundedIcon
             className="sidebar__menuIcon"
             style={iconStyle(30)}
-          />
+          /> <h3>Logout</h3>
         </NavLink>
       </div>
       {/* <ReactTooltip
@@ -98,6 +99,7 @@ function Sidebar() {
         effect="solid"
       /> */}
     </div>
+    </>
   );
 }
 export default Sidebar;

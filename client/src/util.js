@@ -1,8 +1,3 @@
-import { useLocation } from "react-router-dom";
-
-const useQuery = () => {
-  return new URLSearchParams(useLocation().search);
-};
 
 const shuffleArray = (array) => {
   let shuffled = [...array];
@@ -84,7 +79,6 @@ const errorAnim = {
 };
 
 export {
-  useQuery,
   errorAnim,
   pageTransition,
   pageZoom,
