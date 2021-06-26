@@ -2,14 +2,14 @@ import {
   Controller,
   Route,
   Tags,
-  Res,
-  TsoaResponse,
   Body,
   Post,
   Get,
+  Security,
+  Request,
 } from 'tsoa';
 import { MailService } from '../services';
-import { IMail, MailModel } from '../models';
+import { IMail, IMailDocument, ISentMailDocument, MailModel, SentMailModel } from '../models';
 
 @Tags('Mail')
 @Route('/mail')
@@ -20,24 +20,33 @@ export class MailController extends Controller {
     this.mailService = new MailService();
   }
 
-  @Post('/createMail')
+  @Security('auth')
+  @Post('/')
   public async createMail(
     @Body() mail: IMail,
-    @Res() badRequest: TsoaResponse<400, { message: string }>
-  ) {}
+    @Request() req: any
+  ): Promise<ISentMailDocument> {
+    mail.createdBy = req.user.user._id;
+    return this.mailService.createMail(mail);
+  }
 
-  @Get('/sendMail')
-  public async sendMail(
-    @Res() badRequest: TsoaResponse<400, { message: string }>
-  ) {}
+  @Security('auth')
+  @Get('/sent')
+  public async sentMails(
+    @Request() req: any
+  ) {
+    return SentMailModel.find({
+      'mail.createdBy': req.user.user._id
+    })
+  }
 
-  @Get('/getSchedulerMail')
-  public async getListSchedulerMail(
-    @Res() badRequest: TsoaResponse<400, { message: string }>
-  ) {}
-
-  @Get('/getAllSendedMail')
-  public async getAllSendedMail(
-    @Res() badRequest: TsoaResponse<400, { message: string }>
-  ) {}
-}
+  @Security('auth')
+  @Get('/scheduled')
+  public async scheduledMails(
+    @Request() req: any
+  ) {
+    return MailModel.find({
+      createdBy: req.user.user._id
+    })
+  }
+} 

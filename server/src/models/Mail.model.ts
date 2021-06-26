@@ -1,17 +1,17 @@
 import { Document, Model, Schema, model } from 'mongoose';
 
 export enum RecurringEnum {
-  RecurryingSchedule = 'seconds',
-  WeeklySchedule = 'weekly',
-  MonthlySchedule = 'monthly',
-  YearlySchedule = 'yearly',
+  Seconds = 'seconds',
+  Weekly = 'weekly',
+  Monthly = 'monthly',
+  Yearly = 'yearly',
 }
 
 export interface IRecurrence {
   type: RecurringEnum;
   afterSeconds?: number;
   day?: number;
-  date?: string;
+  date?: number;
   month?: number;
   time?: string;
   year?: number;
@@ -19,7 +19,7 @@ export interface IRecurrence {
 
 export interface IMail {
   to: string;
-  cc: string;
+  cc: string[];
   subject: string;
   body: string;
   recurrence: IRecurrence;
@@ -29,7 +29,7 @@ export interface IMail {
 export interface IMailDocument extends IMail, Document {}
 export interface IMailModel extends Model<IMailDocument> {}
 
-const MailSchema = new Schema(
+export const MailSchema = new Schema(
   {
     to: {
       type: String,

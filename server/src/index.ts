@@ -1,6 +1,7 @@
 require('dotenv').config();
 import * as http from 'http';
 import config from './config/config';
+import * as scheduler from 'node-schedule';
 
 // Need to import all controllers so tsoa can build routes.ts
 import * as Controllers from './controllers';

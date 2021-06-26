@@ -2,7 +2,7 @@ import * as errorHandler from 'api-error-handler';
 import * as cors from 'cors';
 import * as express from 'express';
 import * as path from 'path';
-import { RegisterRoutes } from "../../dist/routes";
+import { RegisterRoutes } from '../../dist/routes';
 
 import config from './config';
 import { errorMiddleware } from './errorMiddleware';
@@ -10,16 +10,13 @@ import { notFoundHandler } from './notFoundHandler';
 import { swaggerMiddleware } from './swaggerMiddleware';
 import { MongoDbConnection } from './mongodb-connection';
 import constants from './constants';
+import * as scheduler from 'node-schedule';
+import { CronService } from '../services';
 
 export default function () {
-  const isDevEnvironment = constants.isDevEnvironment;
   const app: express.Express = express();
   const dbConnection = new MongoDbConnection();
-
-  // Models
-  // for (const model of config.globFiles(config.models)) {
-  //   require(path.resolve(model));
-  // }
+  const cronService = new CronService();
 
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));

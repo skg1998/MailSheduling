@@ -6,6 +6,36 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
+			"_LeanDocument__LeanDocument_T__": {
+				"properties": {},
+				"type": "object"
+			},
+			"Pick__LeanDocument_T_.Exclude_keyof_LeanDocument_T_.Exclude_keyofDocument._id-or-id-or-__v_-or-%24isSingleNested__": {
+				"properties": {
+					"_id": {
+						"$ref": "#/components/schemas/_LeanDocument__LeanDocument_T__",
+						"description": "This documents _id."
+					},
+					"__v": {
+						"description": "This documents __v."
+					},
+					"id": {
+						"description": "The string version of this documents _id."
+					}
+				},
+				"type": "object",
+				"description": "From T, pick a set of properties whose keys are in the union K"
+			},
+			"Omit__LeanDocument_this_.Exclude_keyofDocument._id-or-id-or-__v_-or-%24isSingleNested_": {
+				"$ref": "#/components/schemas/Pick__LeanDocument_T_.Exclude_keyof_LeanDocument_T_.Exclude_keyofDocument._id-or-id-or-__v_-or-%24isSingleNested__",
+				"description": "Construct a type with the properties of T except for those in type K."
+			},
+			"LeanDocument_this_": {
+				"$ref": "#/components/schemas/Omit__LeanDocument_this_.Exclude_keyofDocument._id-or-id-or-__v_-or-%24isSingleNested_"
+			},
+			"ISentMailDocument": {
+				"$ref": "#/components/schemas/LeanDocument_this_"
+			},
 			"RecurringEnum": {
 				"enum": [
 					"seconds",
@@ -29,7 +59,8 @@
 						"format": "double"
 					},
 					"date": {
-						"type": "string"
+						"type": "number",
+						"format": "double"
 					},
 					"month": {
 						"type": "number",
@@ -55,7 +86,10 @@
 						"type": "string"
 					},
 					"cc": {
-						"type": "string"
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
 					},
 					"subject": {
 						"type": "string"
@@ -79,6 +113,9 @@
 				],
 				"type": "object",
 				"additionalProperties": false
+			},
+			"IMailDocument": {
+				"$ref": "#/components/schemas/LeanDocument_this_"
 			},
 			"IUser": {
 				"properties": {
@@ -130,27 +167,16 @@
 	},
 	"openapi": "3.0.0",
 	"paths": {
-		"/mail/createMail": {
+		"/mail": {
 			"post": {
 				"operationId": "CreateMail",
 				"responses": {
-					"204": {
-						"description": "No content"
-					},
-					"400": {
-						"description": "",
+					"200": {
+						"description": "Ok",
 						"content": {
 							"application/json": {
 								"schema": {
-									"properties": {
-										"message": {
-											"type": "string"
-										}
-									},
-									"required": [
-										"message"
-									],
-									"type": "object"
+									"$ref": "#/components/schemas/ISentMailDocument"
 								}
 							}
 						}
@@ -159,7 +185,11 @@
 				"tags": [
 					"Mail"
 				],
-				"security": [],
+				"security": [
+					{
+						"auth": []
+					}
+				],
 				"parameters": [],
 				"requestBody": {
 					"required": true,
@@ -173,27 +203,19 @@
 				}
 			}
 		},
-		"/mail/sendMail": {
+		"/mail/sent": {
 			"get": {
-				"operationId": "SendMail",
+				"operationId": "SentMails",
 				"responses": {
-					"204": {
-						"description": "No content"
-					},
-					"400": {
-						"description": "",
+					"200": {
+						"description": "Ok",
 						"content": {
 							"application/json": {
 								"schema": {
-									"properties": {
-										"message": {
-											"type": "string"
-										}
+									"items": {
+										"$ref": "#/components/schemas/ISentMailDocument"
 									},
-									"required": [
-										"message"
-									],
-									"type": "object"
+									"type": "array"
 								}
 							}
 						}
@@ -202,31 +224,27 @@
 				"tags": [
 					"Mail"
 				],
-				"security": [],
+				"security": [
+					{
+						"auth": []
+					}
+				],
 				"parameters": []
 			}
 		},
-		"/mail/getSchedulerMail": {
+		"/mail/scheduled": {
 			"get": {
-				"operationId": "GetListSchedulerMail",
+				"operationId": "ScheduledMails",
 				"responses": {
-					"204": {
-						"description": "No content"
-					},
-					"400": {
-						"description": "",
+					"200": {
+						"description": "Ok",
 						"content": {
 							"application/json": {
 								"schema": {
-									"properties": {
-										"message": {
-											"type": "string"
-										}
+									"items": {
+										"$ref": "#/components/schemas/IMailDocument"
 									},
-									"required": [
-										"message"
-									],
-									"type": "object"
+									"type": "array"
 								}
 							}
 						}
@@ -235,40 +253,11 @@
 				"tags": [
 					"Mail"
 				],
-				"security": [],
-				"parameters": []
-			}
-		},
-		"/mail/getAllSendedMail": {
-			"get": {
-				"operationId": "GetAllSendedMail",
-				"responses": {
-					"204": {
-						"description": "No content"
-					},
-					"400": {
-						"description": "",
-						"content": {
-							"application/json": {
-								"schema": {
-									"properties": {
-										"message": {
-											"type": "string"
-										}
-									},
-									"required": [
-										"message"
-									],
-									"type": "object"
-								}
-							}
-						}
+				"security": [
+					{
+						"auth": []
 					}
-				},
-				"tags": [
-					"Mail"
 				],
-				"security": [],
 				"parameters": []
 			}
 		},
