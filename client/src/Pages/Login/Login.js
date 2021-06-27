@@ -69,7 +69,7 @@ const Login = (props) => {
         e.preventDefault();
         const data = { email, password }
         Api.Signin(data).then(res => {
-            setUserSession(res.accessToken, res.user);
+            setUserSession(res);
             history.push('/');
         }).catch(err => {
             console.log('err');

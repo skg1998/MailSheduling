@@ -1,5 +1,6 @@
 import axios from 'axios';
 import qs from 'query-string';
+import { getToken } from './utils/AuthHandler'
 
 const BASE_URL = 'http://localhost:5000/v1/';
 
@@ -74,21 +75,22 @@ export const GoogleSignin = (data) => {
  */
 
 export const createMail = (data) => {
-    var submitData = qs.stringify({
-        'to': data.to,
-        'cc': data.cc,
-        'subject': data.subject,
-        'body': data.body,
-        'recurrence': data.recurrence
-    });
+    // var submitData = qs.stringify({
+    //     'to': data.to,
+    //     'cc': data.cc,
+    //     'subject': data.subject,
+    //     'body': data.body,
+    //     'recurrence': data.recurrence
+    // });
 
     const configs = {
         method: 'post',
         url: BASE_URL + "mail/",
         headers: {
+            headers: getToken(),
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        data: submitData
+        data: data
     };
 
     return new Promise((resolve, reject) => {
@@ -102,6 +104,7 @@ export const createMail = (data) => {
 export const getMailHistory = () => {
     let config = {
         headers: {
+            headers: getToken(),
             Accept: "application/json",
         },
     }
@@ -118,6 +121,7 @@ export const getMailHistory = () => {
 export const getAllScheduledMail = () => {
     let config = {
         headers: {
+            headers: getToken(),
             Accept: "application/json",
         },
     }

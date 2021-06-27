@@ -21,3 +21,31 @@
   transition: 0.2s;
   transform: scale(1.1);
 }
+
+.MuiInputBase-root.MuiInput-root.MuiInput-underline.MuiInputBase-fullWidth {
+  border: 0.5px solid;
+  padding: 8px !important;
+  padding-top: 0px;
+  border-radius: 4px;
+}
+
+option {
+  padding: 14px;
+  border: 0.5px solid;
+  border-radius: 4px;
+  margin: 4px;
+}
+
+.time-picker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.react-tag-input {
+  padding: 10px;
+}
+
+.DraftEditor-editorContainer {
+  height: 100px;
+}
