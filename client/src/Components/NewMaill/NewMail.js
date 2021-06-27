@@ -6,9 +6,40 @@ import FormatBoldIcon from '@material-ui/icons/FormatBold';
 import FormatItalicIcon from '@material-ui/icons/FormatItalic';
 import FormatUnderlinedIcon from '@material-ui/icons/FormatUnderlined';
 import SendIcon from '@material-ui/icons/Send';
-
+import  { useState,  } from 'react';
 
 function NewMail() {
+
+    const [email,setemail]=useState("");
+    const [CC,setCC]=useState("");
+    const [subject,setSubject]=useState("");
+    const [content,setContent]=useState("")
+    const [sheduleTime,setSheduleTime]=useState("");
+
+    const [tags, setTags] = React.useState([]);
+    const addTags = event => {
+        if (event.key === "Enter" && event.target.value !== "") {
+            setTags([...tags, event.target.value]);
+            event.target.value = "";
+        }
+    
+
+    // handleChangeTO=(e)=>{
+    //     setemail(e.target.value);
+    // }
+    // handleChangeCC=(e)=>{
+    //     setCC(e.target.value);
+    // }
+    // handleChangeSub=(e)=>{
+    //     setSubject(e.target.value);
+    // }
+    // handleChangeTex=(e)=>{
+    //     setContent(e.target.value);
+    // }
+    // handleSelect=(e)=>{
+    //     setSheduleTime(e.target.value);
+    }
+
     return (
         <motion.div
             initial="initial"
@@ -20,15 +51,16 @@ function NewMail() {
             <div className="mail__form">
                 <div>
                     <label htmlFor="#to">To </label>
-                    <input type="text" id="to" />
+                    <input type="text"  id="to" />
                 </div>
+                
                 <div>
                     <label htmlFor="#to">CC </label>
                     <input type="text" id="cc" />
                 </div>
                 <div className="selectInput">
                     <label htmlFor="#cc">Shedule</label>
-                    <select name="" id="">
+                    <select name="" id="" >
                         <option value="second">20-30 Seconds</option>
                         <option value="week">A Week</option>
                         <option value="month">A Month</option>
@@ -41,7 +73,7 @@ function NewMail() {
                     <input type="text" id="subject" />
                 </div>
                 <div>
-                    <textarea placeholder="Type your message here ...">
+                    <textarea placeholder="Type your message here ..." >
 
                     </textarea>
                 </div>
@@ -63,6 +95,7 @@ function NewMail() {
             </div>
         </motion.div>
     )
-}
+
+                            };
 
 export default NewMail

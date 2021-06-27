@@ -7,7 +7,7 @@ function Body({ title, type }) {
 
     return (
         <div>
-            <h1>Welcome To MailScheduler...</h1>
+            {/* <h1>Welcome To MailScheduler...</h1> */}
             <div className="body">
                 <h3 className="title">{title}</h3>
                 {

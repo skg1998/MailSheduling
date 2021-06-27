@@ -1,6 +1,5 @@
 import React from "react";
 import SearchRoundedIcon from "@material-ui/icons/SearchRounded";
-import { Avatar } from "@material-ui/core";
 import "./Header.css";
 
 function Header() {

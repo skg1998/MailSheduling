@@ -15,13 +15,14 @@
 .sidebar::-webkit-scrollbar {
   display: none;
 }
-/* .sidebar__icon {
+.sidebar__icon {
   position: absolute !important;
   top: 2rem;
-  left: 2rem;
+  right: 3rem;
   cursor: pointer;
   z-index: 1000;
-} */
+}
+
 .sidebar__menu {
   margin-top: 4rem;
   display: flex;
@@ -90,4 +91,11 @@
   .sidebar.active {
     left: 0;
   }
+  .sidebar__icon {
+    position: absolute !important;
+    top: 1.5rem;
+    right: 2rem;
+  }
 }
+
+

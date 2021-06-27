@@ -5,6 +5,7 @@ import WatchLaterRoundedIcon from "@material-ui/icons/WatchLaterRounded";
 import LibraryAddRoundedIcon from '@material-ui/icons/LibraryAddRounded';
 import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
 import { NavLink } from "react-router-dom";
+import { Avatar } from "@material-ui/core";
 import { UserContext } from '../../App'
 import "./Sidebar.css";
 
@@ -23,9 +24,15 @@ function Sidebar() {
   const [sidebarActive, setSidebarActive] = useState(false);
   const toggleSidebar = () =>
     setSidebarActive((sidebarActive) => !sidebarActive);
-
+   
   return (
+
     <>
+       {
+         state ? 
+         <Avatar className="btn-bg sidebar__icon" onClick={toggleSidebar}>{state.username[0]}</Avatar>
+          : <Avatar className="btn-bg sidebar__icon" onClick={toggleSidebar}></Avatar>
+       }
       <div className={`sidebar ${sidebarActive ? "active" : ""}`}>
         <h3>MailSheduler</h3>
         <div className="sidebar__menu">
