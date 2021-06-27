@@ -19,7 +19,7 @@ Clone app in your local
 npm install
 
 # project_folder/client
-npm i
+npm install
 ```
 
 ## Run App
@@ -37,9 +37,6 @@ npm start
 ```
  # Access the web app in browser:
  http://localhost:3000
-
- # Access the admin portion:
- http://localhost:3000/admin
 
  # Access the Server:
  http://localhost:5000/
