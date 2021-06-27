@@ -3,10 +3,21 @@ import blank from '../../Assets/file.png'
 import TableRow from '../TableRow/TableRow';
 import { motion } from 'framer-motion';
 import { container, pageTransition } from '../../utils/util';
+import * as Api from '../../Api';
+import { getUser } from '../../utils/AuthHandler'
 
 
 function MailTable({ type }) {
 
+    const [data, setData] = useState({});
+    console.log()
+    useEffect(() => {
+        Api.getMailHistory().then((req) => {
+            console.log(req)
+        }).catch(err => {
+            console.log(err);
+        })
+    }, [])
 
     const [mails, setMails] = useState()
     const mail = [{

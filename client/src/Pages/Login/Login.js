@@ -77,8 +77,8 @@ const Login = (props) => {
     };
 
     const responseSuccessGoogle = (response) => {
-        console.log(response.profileObj);
         const data = { tokenId: response.tokenId }
+        console.log("data", data.tokenId)
         Api.GoogleSignin(data).then(res => {
             console.log('res', res)
             history.push('/')

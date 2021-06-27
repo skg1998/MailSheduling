@@ -51,14 +51,14 @@ export const Signup = (data) => {
 }
 
 export const GoogleSignin = (data) => {
-    console.log("data............................", data)
+    var submitData = qs.stringify(data);
     const configs = {
         method: 'post',
         url: BASE_URL + "user/google-login",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        data: data
+        data: submitData
     };
 
     return new Promise((resolve, reject) => {
