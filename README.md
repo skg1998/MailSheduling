@@ -1,7 +1,3 @@
-# MailSheduling
-> Hackathon Project
-
-
 # MailScheduling
 
 > Full stack application, which is used to send recurring mail using mongodb, express, reactjs, nodejs
@@ -73,7 +69,23 @@ npm start
 
 ![screencapture-localhost-5000-api-doc-2021-06-27-20_51_07](https://user-images.githubusercontent.com/49576577/123559470-cd680500-d7b9-11eb-9813-efd5772be5c9.png)
 
+## Documentation
+
+- Use Swagger to create documentation
+- for swagger /api-docs for the api
+
+## Security
+
+- Encrypt passwords and reset tokens
+- Use cors to make API public
 
 
+## Code Related Suggestions
 
-
+- NPM scripts for dev and production env
+- Config file for important constants
+- Use controller methods with documented descriptions/routes
+- Error handling middleware
+- Authentication middleware for protecting routes and setting user roles
+- Validation using Mongoose and no external libraries
+- Use TypeScript which primarily provides optional static typing, classes and interfaces. One of the big benefits is to enable IDEs to provide a richer environment for spotting common errors as you type the code 
