@@ -1,8 +1,6 @@
 # MailSheduling
 > Hackathon Project
 
-![dashboard](https://user-images.githubusercontent.com/49576577/123489862-88fd2d80-d630-11eb-908a-a7e8f3839b35.png)
-
 
 # MailScheduling
 
@@ -43,5 +41,39 @@ npm start
 ```
 
 ### Version: 1.0.0
+
+# Project Specification
+
+## Client 
+> created with the help of react 
+
+![dashboard](https://user-images.githubusercontent.com/49576577/123489862-88fd2d80-d630-11eb-908a-a7e8f3839b35.png)
+
+### Main functionality
+- Login signin feature
+- Google-Login 
+- create Mail schedular
+- view History Mail
+- view Panding Mail 
+- design mail body 
+
+
+## Backend
+> Backend part serve all functionality including authentication, authrization create mail save data and much more .
+
+## Main functionality
+- Login signin Api
+- google-login Api
+- create mail Api
+- send mail
+- get sent mail
+- get schedule mail
+- cron-job
+- save on database
+
+![screencapture-localhost-5000-api-doc-2021-06-27-20_51_07](https://user-images.githubusercontent.com/49576577/123559470-cd680500-d7b9-11eb-9813-efd5772be5c9.png)
+
+
+
 
 
