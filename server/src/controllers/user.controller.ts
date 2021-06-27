@@ -74,6 +74,7 @@ export class UserController extends Controller {
     @Body() user: any,
     @Res() unauthorized: TsoaResponse<401, { message: string }>
   ): Promise<IAccessTokenSuccess> {
+    console.log('user', Object.assign({}, user));
     const { tokenId } = user;
     console.log('tokenId', tokenId);
     const ticket = await this.googleservice.verifyIdToken({
@@ -93,7 +94,8 @@ export class UserController extends Controller {
         };
       } else {
         const password = `${email}${process.env.JWT_SECRET}`;
-        user = new UserModel({ email, password });
+
+        user = new UserModel({ username: email, password: password });
 
         await user.save((err, data) => {
           if (err) {
