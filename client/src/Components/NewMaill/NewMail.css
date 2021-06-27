@@ -1,77 +1,23 @@
-.mail__form{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding:1rem 2em;
-    position: relative;
-}
-.mail__form div{
-    width: 100%;
-    padding: 0.5rem;
-    position: relative;
-}
-.mail__form div input{
-    border: none;
-    border-bottom: 1px solid #eee;
-    outline: none;
-    padding: 0.5rem 1rem;
-    padding-left: 3rem;
-    width: 90%;
-    border-radius:0.2rem ;
-}
-.mail__form div label{
-    position: absolute;
-    top: 50%;
-    left: 1rem;
-    transform: translateY(-50%);
-}
-.mail__form div textarea{
-    width: 90%;
-    height: 7rem;
-    border: 1px solid #eee;
-    padding: 1rem;
-    font-size: 1rem;
-    resize: none;
-    outline: none;
-}
-.mail__form .selectInput{
-    padding: 0.5rem 1rem;
-    padding-left: 5rem;
-    width: 25%;
-    border-radius:0.2rem ;
-}
-.mail__form .selectInput select{
-    border: 1px solid #eee;
-    outline: none;
-    width: 100%;
-    padding: 0.5rem;
-}
-.mail__form .selectInput select option {
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: none;
-    outline: none;
-}
-.mail__form div .btn{
-    padding: 0.8rem 1.6rem;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    border-radius: 10rem;
-    font-size: 1rem;
-    color: #fff;
-    font-weight: 600;
-    letter-spacing: 1px;
-    display: flex;
-align-items: center;
+.btn {
+  padding: 0.8rem 1.6rem;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  border-radius: 10rem;
+  font-size: 1rem;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
 }
 
-.mail__form .formIcon{
-    margin: 0 0.5rem;
-    margin-right: 0;
-    cursor: pointer;
+.formIcon {
+  margin: 0 0.5rem;
+  margin-right: 0;
+  cursor: pointer;
 }
-.mail__form .formIcon:hover{
-    transition: 0.2s;
-    transform: scale(1.1);
+.formIcon:hover {
+  transition: 0.2s;
+  transform: scale(1.1);
 }

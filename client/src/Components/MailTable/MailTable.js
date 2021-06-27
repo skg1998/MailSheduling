@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { getData } from '../../request';
-import blank from '../../assets/file.png'
+import blank from '../../Assets/file.png'
 import TableRow from '../TableRow/TableRow';
 import { motion } from 'framer-motion';
 import { container, pageTransition } from '../../utils/util';
 
 
 function MailTable({ type }) {
-      
-    
+
+
     const [mails, setMails] = useState()
     const mail = [{
         id: ' 646468466', sno: '5', mail: 'ankit@email.co',
@@ -29,24 +28,7 @@ function MailTable({ type }) {
         date: '06/05/2002', type: 'pending'
 
     }]
-    const getMails = async () => {
-        try {
-            const { data, response } = await getData(`/getmails:${type}`)
-            if (data) {
-                setMails(data);
-            }
-            else if (response.status !== 200) {
-                console.log('unable to get mails')
-            }
-        } catch (error) {
-            console.log(error)
-        }
 
-    }
-
-    useEffect(() => {
-        getMails()
-    }, [])
     return (
         <motion.div
             initial="hidden"

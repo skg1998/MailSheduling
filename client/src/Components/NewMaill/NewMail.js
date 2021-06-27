@@ -1,14 +1,27 @@
 import { motion } from 'framer-motion'
-import React from 'react'
+import React, { useState } from 'react'
 import { container, pageTransition } from '../../utils/util'
-import './NewMail.css'
-import FormatBoldIcon from '@material-ui/icons/FormatBold';
-import FormatItalicIcon from '@material-ui/icons/FormatItalic';
-import FormatUnderlinedIcon from '@material-ui/icons/FormatUnderlined';
+
+import TextField from "@material-ui/core/TextField";
+import Grid from '@material-ui/core/Grid';
+
 import SendIcon from '@material-ui/icons/Send';
+import RichTextEditor from 'react-rte';
+
+import './NewMail.css'
 
 
 function NewMail() {
+    const [value, setValue] = useState(RichTextEditor.createEmptyValue());
+
+    const onChange = (value) => {
+        setValue({ value });
+    };
+
+    const handleSubmit = () => {
+
+    }
+
     return (
         <motion.div
             initial="initial"
@@ -17,50 +30,52 @@ function NewMail() {
             variants={container}
             transition={pageTransition}
             className="mailBox">
-            <div className="mail__form">
-                <div>
-                    <label htmlFor="#to">To </label>
-                    <input type="text" id="to" />
-                </div>
-                <div>
-                    <label htmlFor="#to">CC </label>
-                    <input type="text" id="cc" />
-                </div>
-                <div className="selectInput">
-                    <label htmlFor="#cc">Shedule</label>
-                    <select name="" id="">
-                        <option value="second">20-30 Seconds</option>
-                        <option value="week">A Week</option>
-                        <option value="month">A Month</option>
-                        <option value="year">A Year</option>
-                    </select>
-
-                </div>
-                <div>
-                    <label htmlFor="subject">Subject</label>
-                    <input type="text" id="subject" />
-                </div>
-                <div>
-                    <textarea placeholder="Type your message here ...">
-
-                    </textarea>
-                </div>
-                <div>
-                    <FormatBoldIcon className="formIcon" />
-                    <FormatItalicIcon className="formIcon" />
-                    <FormatUnderlinedIcon className="formIcon" />
-                </div>
-                <div>
-                    <motion.button
-                        whileHover={{ scale: 1.05, transition: { duration: 0.1 } }}
-                        whileTap={{ scale: 0.95, transition: { duration: 0.1 } }}
-                        className="btn btn-bg"
-                        type="submit">
-                        Send
-                        <SendIcon className="formIcon" />
-                    </motion.button>
-                </div>
-            </div>
+            <Grid container spacing={3} >
+                <Grid item lg={12} sm={9} xl={6} xs={3}>
+                    <form onSubmit={handleSubmit} noValidate autoComplete="off">
+                        <Grid container spacing={3}>
+                            <Grid item lg={12} sm={12} xl={12} xs={12}>
+                                <TextField
+                                    id="outlined-full-width"
+                                    placeholder="To"
+                                    fullWidth
+                                    margin="normal"
+                                    variant="outlined"
+                                    name="name"
+                                />
+                            </Grid>
+                            <Grid item lg={12} sm={12} xl={12} xs={12}>
+                                <TextField
+                                    id="outlined-full-width"
+                                    placeholder="Subject"
+                                    fullWidth
+                                    margin="normal"
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                    variant="outlined"
+                                />
+                            </Grid>
+                        </Grid>
+                    </form>
+                </Grid>
+                <Grid>
+                    <RichTextEditor value={value}
+                        onChange={onChange} />
+                </Grid>
+                <Grid item lg={12} sm={9} xl={6} xs={3}>
+                    <div>
+                        <motion.button
+                            whileHover={{ scale: 1.05, transition: { duration: 0.1 } }}
+                            whileTap={{ scale: 0.95, transition: { duration: 0.1 } }}
+                            className="btn btn-bg"
+                            type="submit">
+                            Send
+                            <SendIcon className="formIcon" />
+                        </motion.button>
+                    </div>
+                </Grid>
+            </Grid>
         </motion.div>
     )
 }

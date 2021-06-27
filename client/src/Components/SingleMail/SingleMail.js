@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
-
-import { getData } from '../../request';
+import React, { useState } from 'react'
 import { motion } from 'framer-motion';
 import { pageTransition, pageZoom } from '../../utils/util';
 
 import './SingleMail.css'
 
 function SingleMail() {
-    const { id } = useParams();
 
     const [singleMail, setSingleMail] = useState({
         mail: 'ankit@gmail.co',
@@ -30,25 +26,6 @@ function SingleMail() {
         If you have any doubts regarding the task, kindly mail us at arsalan@flipr.ai We'll contact you shortly after reading the mail.
         Kindly submit the task by 27th June 2021 10:00 PM through the link given below.`
     })
-
-    const getMail = async () => {
-        try {
-            const { data, response } = await getData(`/getmail:${id}`)
-            if (data) {
-                setSingleMail(data);
-            }
-            else if (response.status !== 200) {
-                console.log('unable to get mails')
-            }
-        } catch (error) {
-            console.log(error)
-        }
-
-    }
-
-    useEffect(() => {
-        getMail()
-    }, [])
 
     return (
         <div className="body">
