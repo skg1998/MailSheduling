@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import Card from '@material-ui/core/Card';
 import { CardActions, CardContent } from '@material-ui/core';
@@ -8,11 +8,9 @@ import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
-import Dialog from '@material-ui/core/Dialog'
 import Grid from '@material-ui/core/Grid'
-import { DialogActions, DialogContent, DialogContentText, DialogTitle } from "@material-ui/core"
 
-// import SEO from '../components/SEO/Seo';
+import * as Api from '../../Api';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -48,23 +46,22 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const Signup = () => {
-    const [input, setInput] = useState({ name: '', password: '', email: '' });
-    const [submitted, setSubmitted] = useState(false);
-
-    const handleChange = name => event => {
-        setInput({ [name]: event.target.value });
-    };
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const history = useHistory();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setSubmitted(true);
         const user = {
-            name: input.name || undefined,
-            email: input.email || undefined,
-            password: input.password || undefined
+            email,
+            password
         };
 
-        console.log(user);
+        Api.Signup(user).then(res => {
+            history.push('/login')
+        }).catch(err => {
+            console.log(err);
+        })
     };
 
     const classes = useStyles();
@@ -92,23 +89,15 @@ const Signup = () => {
                                 className={classes.title}
                             >
                                 Sign Up
-                        </Typography>
-                            <TextField
-                                id="name"
-                                label="Name"
-                                variant="outlined"
-                                className={classes.textField}
-                                value={input.name}
-                                onChange={handleChange}
-                            />
+                            </Typography>
                             <TextField
                                 id="email"
                                 type="email"
                                 label="Email"
                                 variant="outlined"
                                 className={classes.textField}
-                                value={input.email}
-                                onChange={handleChange}
+                                value={email}
+                                onChange={e => setEmail(e.target.value)}
                             />
                             <TextField
                                 id="password"
@@ -116,37 +105,30 @@ const Signup = () => {
                                 label="Password"
                                 variant="outlined"
                                 className={classes.textField}
-                                value={input.password}
-                                onChange={handleChange}
+                                value={password}
+                                onChange={e => setPassword(e.target.value)}
                             />
                         </CardContent>
                         <CardActions>
-                            <Button
-                                variant="contained"
-                                type="submit"
-                                color="primary"
-                                className={classes.submit}
-                            >
-                                Submit
-                        </Button>
+                            <Grid container spacing={3}>
+                                <Grid item lg={12} md={9}>
+                                    <Button
+                                        variant="contained"
+                                        type="submit"
+                                        color="primary"
+                                        className={classes.submit}
+                                    >
+                                        Submit
+                                    </Button>
+                                </Grid>
+                                <Grid item lg={12} md={9}>
+                                    <Link to="/login"><p>Signup</p></Link>
+                                </Grid>
+
+                            </Grid>
                         </CardActions>
                     </Card>
                 </form>
-                <Dialog open={submitted} disableBackdropClick={true}>
-                    <DialogTitle>New Account</DialogTitle>
-                    <DialogContent>
-                        <DialogContentText>
-                            New account successfully created.
-                    </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                        <Link to="/signin">
-                            <Button color="primary" autoFocus="autoFocus" variant="raised">
-                                Sign In
-                        </Button>
-                        </Link>
-                    </DialogActions>
-                </Dialog>
             </Grid>
         </div>
     );

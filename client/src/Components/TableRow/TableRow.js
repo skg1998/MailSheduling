@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
 import CloudDoneIcon from '@material-ui/icons/CloudDone';
 
-import { postData } from '../../request';
 import { item } from '../../utils/util';
 
 
@@ -15,8 +14,7 @@ function TableRow({ id, sno, mailId, subject, body, date, type }) {
     const history = useHistory();
 
     const cancelMail = () => {
-        window.alert('delete')
-        postData(id, '/deletemail').then(() => console.log('deleted')).catch((e) => console.log(e))
+
     }
 
     const onMailClick = () => {

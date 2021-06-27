@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import WatchLaterRoundedIcon from "@material-ui/icons/WatchLaterRounded";
@@ -6,8 +6,8 @@ import LibraryAddRoundedIcon from '@material-ui/icons/LibraryAddRounded';
 import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
 import Divider from '@material-ui/core/Divider';
 
-import { NavLink } from "react-router-dom";
-import { UserContext } from '../../App'
+import { NavLink, useHistory } from "react-router-dom";
+import { removeUserSession } from "../../utils/AuthHandler"
 import "./Sidebar.css";
 
 const iconStyle = (fontsize) => {
@@ -20,11 +20,16 @@ const iconStyle = (fontsize) => {
 };
 
 function Sidebar() {
-  const { state, dispatch } = useContext(UserContext);
-
   const [sidebarActive, setSidebarActive] = useState(false);
+  const history = useHistory();
   const toggleSidebar = () =>
     setSidebarActive((sidebarActive) => !sidebarActive);
+
+
+  const logout = () => {
+    removeUserSession();
+    history.push('/login');
+  }
 
   return (
     <>
@@ -74,19 +79,18 @@ function Sidebar() {
               }
             /> <h3>New Mail</h3>
           </NavLink>
-          <NavLink
-            to="/logout"
+          <div
             className="sidebar__menuItem"
             activeClassName="active"
             data-tip="Logout"
             data-for="sidebarTooltip"
-            onClick={toggleSidebar}
+            onClick={logout}
           >
             <ExitToAppRoundedIcon
               className="sidebar__menuIcon"
               style={iconStyle(30)}
             /> <h3>Logout</h3>
-          </NavLink>
+          </div>
         </div>
       </div>
     </>
