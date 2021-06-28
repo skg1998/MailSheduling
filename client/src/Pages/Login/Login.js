@@ -8,7 +8,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import { Card, CardActions, CardContent } from "@material-ui/core"
 import GoogleLogin from 'react-google-login'
-
+import Snackbar from '../../Components/Toaster/Toaster';
 import * as Api from '../../Api';
 import { setUserSession, getToken } from '../../utils/AuthHandler'
 
@@ -46,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const Login = (props) => {
+    const [status, setStatusBase] = React.useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isAuthenticated, userHasAuthenticated] = useState(false);
@@ -65,14 +66,17 @@ const Login = (props) => {
         sessionHandler();
     }, [])
 
+    const setStatus = msg => setStatusBase({ msg, date: new Date() });
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const data = { email, password }
         Api.Signin(data).then(res => {
             setUserSession(res);
+            setStatus("success")
             history.push('/');
         }).catch(err => {
-            console.log('err');
+            setStatus("Failed")
         })
     };
 
@@ -80,8 +84,10 @@ const Login = (props) => {
         const data = { tokenId: response.tokenId }
         console.log("data", data.tokenId)
         Api.GoogleSignin(data).then(res => {
-            console.log('res', res)
+            setStatus("success")
             history.push('/')
+        }).catch(err => {
+            setStatus("Failed")
         })
     }
 
@@ -164,6 +170,7 @@ const Login = (props) => {
                                             cookiePolicy={'single_host_origin'}
                                         />
                                     </Grid>
+                                    {status ? <Snackbar key={status.date} status={status.msg} /> : null}
                                 </Grid>
                             </CardActions>
                         </Card>

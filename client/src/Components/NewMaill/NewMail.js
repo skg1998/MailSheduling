@@ -8,246 +8,18 @@ import SendIcon from '@material-ui/icons/Send';
 import ReactTagInput from "@pathofdev/react-tag-input";
 import "@pathofdev/react-tag-input/build/index.css";
 import RichTextEditor from 'react-rte';
-import {
-    MuiPickersUtilsProvider,
-    KeyboardTimePicker
-} from '@material-ui/pickers';
-import 'date-fns';
+import { MuiPickersUtilsProvider, KeyboardTimePicker } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
-
+import Snackbar from '../Toaster/Toaster';
+import 'date-fns';
 import { container, pageTransition } from '../../utils/util'
-
+import { recurnce, SelectDate, SelectWeek, SelectMonth } from './NewMailData'
 import * as Api from '../../Api'
 import './NewMail.css'
 
-const recurnce = [
-    {
-        value: 'seconds',
-        label: 'Seconds',
-    },
-    {
-        value: 'weekly',
-        label: 'Weekly',
-    },
-    {
-        value: 'monthly',
-        label: 'Monthly',
-    },
-    {
-        value: 'yearly',
-        label: 'Yearly',
-    },
-];
-
-const SelectWeek = [
-    {
-        value: '0',
-        label: 'Sunday',
-    },
-    {
-        value: '1',
-        label: 'Monday',
-    },
-    {
-        value: '2',
-        label: 'Tuesday',
-    },
-    {
-        value: '3',
-        label: 'Wednesday',
-    },
-    {
-        value: '4',
-        label: 'Thrusday',
-    },
-    {
-        value: '5',
-        label: 'Friday',
-    },
-    {
-        value: '6',
-        label: 'Saturday',
-    }
-];
-
-const SelectDate = [
-    {
-        value: '1',
-        label: '1',
-    },
-    {
-        value: '2',
-        label: '2',
-    },
-    {
-        value: '3',
-        label: '3',
-    },
-    {
-        value: '4',
-        label: '4',
-    },
-    {
-        value: '5',
-        label: '5',
-    },
-    {
-        value: '6',
-        label: '6',
-    },
-    {
-        value: '7',
-        label: '7',
-    },
-    {
-        value: '8',
-        label: '8',
-    },
-    {
-        value: '9',
-        label: '9',
-    },
-    {
-        value: '10',
-        label: '10',
-    },
-    {
-        value: '11',
-        label: '11',
-    },
-    {
-        value: '12',
-        label: '12',
-    },
-    {
-        value: '6',
-        label: '6',
-    },
-    {
-        value: '13',
-        label: '13',
-    },
-    {
-        value: '14',
-        label: '14',
-    }, {
-        value: '15',
-        label: '15',
-    }, {
-        value: '16',
-        label: '16',
-    }, {
-        value: '17',
-        label: '17',
-    }, {
-        value: '18',
-        label: '18',
-    }, {
-        value: '19',
-        label: '19',
-    },
-    {
-        value: '20',
-        label: '20',
-    },
-    {
-        value: '21',
-        label: '21',
-    },
-    {
-        value: '22',
-        label: '22',
-    },
-    {
-        value: '23',
-        label: '23',
-    },
-    {
-        value: '24',
-        label: '24',
-    },
-    {
-        value: '25',
-        label: '25',
-    },
-    {
-        value: '26',
-        label: '26',
-    },
-    {
-        value: '27',
-        label: '27',
-    },
-    {
-        value: '28',
-        label: '28',
-    },
-    {
-        value: '29',
-        label: '29',
-    },
-    {
-        value: '30',
-        label: '30',
-    },
-    {
-        value: '31',
-        label: '31',
-    },
-];
-
-const SelectMonth = [
-    {
-        value: '1',
-        label: 'January',
-    },
-    {
-        value: '2',
-        label: 'February',
-    },
-    {
-        value: '3',
-        label: 'March',
-    },
-    {
-        value: '4',
-        label: 'April',
-    },
-    {
-        value: '5',
-        label: 'May',
-    },
-    {
-        value: '6',
-        label: 'June',
-    },
-    {
-        value: '7',
-        label: 'July',
-    },
-    {
-        value: '8',
-        label: 'August',
-    },
-    {
-        value: '9',
-        label: 'September',
-    },
-    {
-        value: '10',
-        label: 'October',
-    },
-    {
-        value: '11',
-        label: 'November',
-    },
-    {
-        value: '12',
-        label: 'December',
-    }
-]
 
 function NewMail(props) {
+    const [status, setStatusBase] = React.useState("");
     const [tags, setTags] = useState([])
     const [to, setTo] = useState();
     const [subject, setSubject] = useState();
@@ -277,6 +49,8 @@ function NewMail(props) {
         setYearly({ ...yearly, [e.target.name]: e.target.value, time_: e.target.event });
     };
 
+    const setStatus = msg => setStatusBase({ msg, date: new Date() });
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const data = {
@@ -300,9 +74,9 @@ function NewMail(props) {
         }
 
         Api.createMail(data).then((res) => {
-            console.log(res);
+            setStatus("success")
         }).catch((err) => {
-            console.log(err)
+            setStatus("Failed")
         })
     }
 
@@ -321,9 +95,7 @@ function NewMail(props) {
                 type="number"
                 value={second}
                 onChange={e => setSecond(e.target.value)}
-            >
-
-            </TextField>
+            />
         } else if (type === 'weekly') {
             return <>
                 <Grid container spacing={3}>
@@ -604,6 +376,7 @@ function NewMail(props) {
                                         <SendIcon className="formIcon" />
                                     </motion.button>
                                 </div>
+                                {status ? <Snackbar key={status.date} status={status.msg} /> : null}
                             </Grid>
                         </Grid>
                     </form>

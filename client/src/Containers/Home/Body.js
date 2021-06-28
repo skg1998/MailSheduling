@@ -1,7 +1,7 @@
 import React from 'react'
 import './Body.css'
-import MailTable from '../MailTable/MailTable'
-import NewMail from '../NewMaill/NewMail'
+import MailTable from '../../Components/MailTable/MailTable'
+import NewMail from '../../Components/NewMaill/NewMail'
 
 function Body({ title, type }) {
 
@@ -10,12 +10,7 @@ function Body({ title, type }) {
             <div className="body">
                 <h3 className="title">{title}</h3>
                 {
-                    type === 'new_mail' ?
-                        <>
-                            <NewMail />
-                        </>
-                        :
-                        <MailTable type={type} />
+                    type === 'new_mail' ? <NewMail /> : <MailTable type={type} />
                 }
             </div>
         </div>
