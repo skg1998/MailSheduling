@@ -6,6 +6,23 @@
 
 Clone app in your local
 
+
+Add .env file and update values/setting to your own
+
+```
+NODE_ENV=dev
+PORT=5000
+MONGO_CONNECTION_STRING=
+JWT_SECRET=
+JWT_EXPIRY=30d
+SERVICE=
+EMAIL=
+PASSWORD=
+FROM_NAME=
+FROM_EMAIL=
+GOOGLE_CLIENT_ID=
+```
+
 ## Install Dependencies
 
 ```
