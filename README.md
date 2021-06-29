@@ -5,7 +5,7 @@
 [Frontend Link](https://mailschedular.vercel.app/)
 \
 [Server Api Doc Link](https://mailschedular.herokuapp.com/api-doc/)
-\
+
 
 ## Usage
 
