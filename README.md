@@ -2,7 +2,7 @@
 
 > Full stack application, which is used to send recurring mail using mongodb, express, reactjs, nodejs
 
-> [Frontend Link](https://mailschedular.vercel.app/)
+> [Frontend Link](https://mailschedular.vercel.app/)_
 > [Server Api Doc Link](https://mailschedular.herokuapp.com/api-doc/)
 
 ## Usage
